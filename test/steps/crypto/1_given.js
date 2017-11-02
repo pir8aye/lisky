@@ -53,6 +53,7 @@ export function aCryptoInstanceHasBeenInitialised() {
 		'decryptPassphrase',
 		'getKeys',
 		'getAddressFromPublicKey',
+		'signMessage',
 	].forEach((methodName) => {
 		sandbox.stub(cryptoInstance, methodName).returns(cryptoResult);
 	});

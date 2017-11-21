@@ -134,14 +134,18 @@ export function theActionIsCalledWithTheRecipientTheMessageAndTheOptions() {
 }
 
 export function theActionIsCalledWithTheTypeTheInputsAndTheOptions() {
-	const { action, type, inputs, options } = this.test.ctx;
+	const {
+		action, type, inputs, options,
+	} = this.test.ctx;
 	const returnValue = action({ type, inputs, options });
 	this.test.ctx.returnValue = returnValue;
 	return returnValue.catch(e => e);
 }
 
 export function theActionIsCalledWithTheTypeTheInputAndTheOptions() {
-	const { action, type, input, options } = this.test.ctx;
+	const {
+		action, type, input, options,
+	} = this.test.ctx;
 	const returnValue = action({ type, input, options });
 	this.test.ctx.returnValue = returnValue;
 	return returnValue.catch(e => e);

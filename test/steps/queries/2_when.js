@@ -25,7 +25,9 @@ export function theQueryInstanceSendsARequestUsingTheEndpointAndTheParameters() 
 }
 
 export function theQueryInstanceSendsARequestUsingTheEndpointTheParametersAndTheOptions() {
-	const { queryInstance, endpoint, parameters, options } = this.test.ctx;
+	const {
+		queryInstance, endpoint, parameters, options,
+	} = this.test.ctx;
 	const returnValue = queryInstance.sendRequest(endpoint, parameters, options);
 	this.test.ctx.returnValue = returnValue;
 	return returnValue.catch(e => e);

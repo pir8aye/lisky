@@ -110,11 +110,11 @@ export const createStreamStub = on => ({
 
 export function getTransactionCreatorFunctionNameByType(transactionType) {
 	switch (transactionType) {
-	case 0:	return 'createTransaction';
-	case 1: return 'signTransaction';
-	case 2:	return 'createDelegate';
-	case 3: return 'createVote';
-	case 4: return 'createMultisignature';
+	case 0:	return 'transfer';
+	case 1: return 'registerSecondPassphrase';
+	case 2:	return 'registerDelegate';
+	case 3: return 'castVotes';
+	case 4: return 'registerMultisignature';
 	default: throw new Error(`Transaction type ${transactionType} is not supported`);
 	}
 }

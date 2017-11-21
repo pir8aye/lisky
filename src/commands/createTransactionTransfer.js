@@ -30,7 +30,12 @@ const description = `Creates a transaction which will transfer the specified amo
 `;
 
 const processInputs = (amount, address) => ({ passphrase, secondPassphrase }) =>
-	transactions.createTransaction(address, amount, passphrase, secondPassphrase);
+	transactions.transfer({
+		recipientId: address,
+		amount,
+		secret: passphrase,
+		secondSecret: secondPassphrase,
+	});
 
 export const actionCreator = vorpal => async ({ amount, address, options }) => {
 	const {

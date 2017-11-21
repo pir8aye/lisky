@@ -28,19 +28,19 @@ const description = `Creates a transaction which will register a multisignature 
 	Minimum as the amount of signatures needed until the transaction will be processed.
 
 	Examples:
-	- create transaction create multisignature account 24 2 215b667a32a5cd51a94c9c2046c11fffb08c65748febec099451e3b164452bca 922fbfdd596fa78269bbcadc67ec2a1cc15fc929a19c462169568d7a3df1a1aa
+	- create transaction register multisignature account 24 2 215b667a32a5cd51a94c9c2046c11fffb08c65748febec099451e3b164452bca 922fbfdd596fa78269bbcadc67ec2a1cc15fc929a19c462169568d7a3df1a1aa
 	- create transaction 4 24 2 215b667a32a5cd51a94c9c2046c11fffb08c65748febec099451e3b164452bca 922fbfdd596fa78269bbcadc67ec2a1cc15fc929a19c462169568d7a3df1a1aa
 `;
 
 const processInputs = (lifetime, minimum, keysgroup) =>
 	({ passphrase, secondPassphrase }) =>
-		transactions.createMultisignature(
-			passphrase,
-			secondPassphrase,
+		transactions.registerMultisignature({
+			secret: passphrase,
+			secondSecret: secondPassphrase,
 			keysgroup,
 			lifetime,
-			minimum,
-		);
+			min: minimum,
+		});
 
 export const actionCreator = vorpal => async ({
 	lifetime, minimum, keysgroup, options,
@@ -85,8 +85,8 @@ export const actionCreator = vorpal => async ({
 		));
 };
 
-const createTransactionRegisterSecondPassphrase = createCommand({
-	command: 'create transaction create multisignature account <lifetime> <minimum> <keysgroup...>',
+const createTransactionRegisterMultisignatureAccount = createCommand({
+	command: 'create transaction register multisignature account <lifetime> <minimum> <keysgroup...>',
 	alias: 'create transaction 4',
 	description,
 	actionCreator,
@@ -94,7 +94,7 @@ const createTransactionRegisterSecondPassphrase = createCommand({
 		commonOptions.passphrase,
 		commonOptions.secondPassphrase,
 	],
-	errorPrefix: 'Could not create "create multisignature group" transaction',
+	errorPrefix: 'Could not create "register multisignature account" transaction',
 });
 
-export default createTransactionRegisterSecondPassphrase;
+export default createTransactionRegisterMultisignatureAccount;

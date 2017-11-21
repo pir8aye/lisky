@@ -26,7 +26,11 @@ const description = `Creates a transaction which will register an existing accou
 `;
 
 const processInputs = username => ({ passphrase, secondPassphrase }) =>
-	transactions.createDelegate(passphrase, username, secondPassphrase);
+	transactions.registerDelegate({
+		secret: passphrase,
+		secondSecret: secondPassphrase,
+		username,
+	});
 
 export const actionCreator = vorpal => async ({ username, options }) => {
 	const {
@@ -47,7 +51,7 @@ export const actionCreator = vorpal => async ({ username, options }) => {
 		.then(processInputs(username));
 };
 
-const createTransactionRegisterSecondPassphrase = createCommand({
+const createTransactionRegisterDelegate = createCommand({
 	command: 'create transaction register delegate <username>',
 	alias: 'create transaction 2',
 	description,
@@ -59,4 +63,4 @@ const createTransactionRegisterSecondPassphrase = createCommand({
 	errorPrefix: 'Could not create "register delegate" transaction',
 });
 
-export default createTransactionRegisterSecondPassphrase;
+export default createTransactionRegisterDelegate;

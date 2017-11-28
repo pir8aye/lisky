@@ -2419,6 +2419,10 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+mocha-bdd@=0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/mocha-bdd/-/mocha-bdd-0.1.0.tgz#69a0f158f193edd48f0fe1872813d05ac7d13af1"
+
 mocha@=4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/mocha/-/mocha-4.0.1.tgz#0aee5a95cf69a4618820f5e51fa31717117daf1b"

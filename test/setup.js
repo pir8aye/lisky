@@ -18,7 +18,9 @@ import 'babel-polyfill';
 import should from 'should';
 import sinon from 'sinon';
 import 'should-sinon';
-import './givenWhenThen';
+import mochaBDD from 'mocha-bdd';
+
+mochaBDD();
 
 process.env.NODE_ENV = 'test';
 process.env.LISKY_CONFIG_DIR = process.env.LISKY_CONFIG_DIR || `${os.homedir()}/.lisky`;
